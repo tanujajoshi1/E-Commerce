@@ -9,7 +9,7 @@ class AuctionListing(models.Model):
     owner = models.CharField(max_length=64)
     title = models.CharField(max_length=64)
     description = models.TextField()
-    startBid = models.IntegerField()
+    startBid = models.IntegerField(null=True)
     category = models.CharField(max_length=64)
     image = models.CharField(max_length=64,default=None,blank=True,null=True)
     date = models.CharField(max_length=64)

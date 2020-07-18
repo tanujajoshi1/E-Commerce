@@ -62,13 +62,13 @@ def register(request):
 
 
 def index(request):
-    items=AuctionListing.objects.all()
+    items=AuctionListing.objects.all().order_by("id").reverse()
     try:
         w = Watchlist.objects.filter(user=request.user.username)
         wcount=len(w)
     except:
         wcount=None
-    return render(request, "auctions/index.html",{
+    return render(request,"auctions/index.html",{
         "items":items,
         "wcount":wcount
     })
