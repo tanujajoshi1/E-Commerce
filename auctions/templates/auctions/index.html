@@ -1,28 +1,34 @@
+
 {% extends "auctions/layout.html" %}
 
 {% block body %}
-<div class="container">
-    <h2>Active Listings</h2>
+    <h2 style="text-align: center;font-family: Times New Roman"><b>Active Listings</b></h2>
+    
+{% for data in items%}
+<center>
 
-</div>
-<div class="container" id="listings">
-    {% for i in items %}
-    <div class="card mb-3" style="max-width: 540px;" id="card-listings">
-        <div class="row no-gutters">
-          <div class="col-md-4">
-            <img src="{{i.image}}" class="card-img" alt="...">
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <h5 class="card-title">{{i.title}}</h5>
-              <p class="card-text">{{i.description}}</p>
-              <p class="card-text">${{i.startBid}}</p>
-              <a href="{% url 'ActiveListing' i.id %}"><button class="btn btn-outline-success">Bid Now!</button></a>
-              <p class="card-text"><small class="text-muted">{{i.date}}</small></p>
+  <div class="card border-primary mb-5" style="width: 25rem;background-color: white;color: white">
+    <img class="card-img-top" alt="..." src={{data.image}} >
+            <div class="card-body" style="text-align: center">
+                <h4 class="card-title" ><b>{{data.title}}</b></h4>
+                 <h6 class="card-text">Bid: ${{data.startBid}}</h6>
+                <h6 class="card-text">Category: {{data.category}}</h6>
+                <h6 class="card-text">Description: {{data.description}}</h6> 
+                <label style="font-size:smaller;color: gray">Created on {{data.date}}</label><br/> 
+                 <label style="font-size:smaller;color: gray">Created By: {{data.owner}}</label>              
             </div>
-          </div>
+            <div class="card-footer" style="background-color: lightgray;text-align: center;">
+                <a href="{%url 'ActiveListing' data.id %}" class="card-link">Go to the item</a>
+            </div>
         </div>
-      </div>
-      {% endfor %}
-</div>
+
+{%empty%}
+<br/>
+<center>...No item for auction...</center>
+{%endfor%}
+
+ </center>
+
+
+ 
 {% endblock %}

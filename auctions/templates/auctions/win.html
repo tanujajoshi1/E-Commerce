@@ -2,18 +2,23 @@
 
 {% block body %}
 <div class="container">
-    <h2>{{title}}</h2>
+    <h2 style="text-align: center;font-family: Times New Roman"><b>{{title}}</b></h2>
 </div>
 <div class="container" id="listings">
-    <h3>This listing is no longer active.</h3>
-    {% if cb.winner == user.username %}
-    <h4>Congratulations 🏆</h4>
-    <p>You won this bid.</p>
+       
+    {% if i.winner == user.username %} 
+     <div class="alert alert-success" role="alert">Congratulations 🎉🎉  You've won this item</div>  
+     {%else%}
+     <div class="alert alert-success" role="alert">Congratulations 🎉🎉  Bid is sold now</div> 
     {% endif %}
     <ul>
-        <li><b>Owner:</b>{{cb.owner}}</li>
-        <li><b>Winner:</b>{{cb.winner}}</li>
-        <li><b>Winning Price:</b>{{cb.winprice}}</li>
+        <li><b>Owner:</b>{{i.owner}}</li>
+        <li><b>Winner:</b>{{i.winner}}</li>
+        <li><b>Winning Price:</b>{{i.winprice}}</li>
     </ul>
+
+    <div class="alert alert-dark" role="alert">
+     This item is now removed from the list. No longer active
+     </div>
 </div>
 {% endblock %}

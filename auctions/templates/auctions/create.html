@@ -1,44 +1,82 @@
-{% extends "auctions/layout.html" %}
-{% block body %}
-<div class="container">
-    <h2>Create listing</h2>
 
-</div>
+
+
+
+
+
+
+
+
+
+
+{% extends "auctions/layout.html" %}
+
+
+{%block title%}Create Auction{%endblock%}
+
+  
+
+{%block body%}
+
 <div class="container">
-    <form action="{% url 'submit' %}" method="POST">
-        {% csrf_token %}
+  <div class="row">
+    <div class="col-md-3">
+      <div class="contact-info">
+        <img src="https://assets.dryicons.com/uploads/icon/svg/1014/add_item.svg" alt="image"/>
+        <h2 style="font-family: 'sans-serif';font-weight: bold;text-align: center;">Add an Item</h2>
+        <h4 style="font-family: serif;">We would love to add your item to the Auction List!</h4>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <form class="contact-form" method=POST action="{%url 'submit' %}">
+        {% csrf_token%}
         <div class="form-group">
-          <label for="exampleFormControlInput1">Title</label>
-          <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Title of the lisiting..." name="title" required>
+          <label class="control-label col-sm-3" for="title">Title</label>
+          <div class="col-sm-10">          
+          <input type="text" class="form-control" id="title" placeholder="Enter title" name="title">
+          </div>
         </div>
-        
         <div class="form-group">
-          <label for="exampleFormControlTextarea1">Description</label>
-          <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" placeholder="Description..." name="description" required></textarea>
+          <label class="control-label col-sm-3" for="description">Description</label>
+          <div class="col-sm-10">          
+          <textarea type="text" class="form-control"  id="description" placeholder="Add a description" name="description"></textarea>
+          </div>
         </div>
-          <div class="form-group">
-            <label for="exampleFormControlSelect1">Category</label>
-            <select class="form-control" id="exampleFormControlSelect1" name="category" required>
-              <option>Fashion</option>
-              <option>Tools</option>
+        <div class="form-group">
+          <label class="control-label col-sm-3" for="startBid">Start Bid</label>
+          <div class="col-sm-10">
+          <input type="number" class="form-control" step=0.01 id="startBid" placeholder="Bid" name="startBid">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-sm-3" for="image">Image url</label>
+          <div class="col-sm-10">
+          <input type=text class="form-control" rows="5" id="image" name="image">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-sm-3" for="category">Category</label>
+         
+            <select class="form-control " style="margin-left: 2%;width: 10cm" name="category" required>
+              <option disabled selected="selected">None</option>
+              <option>Clothings</option>
               <option>Toys</option>
               <option>Electronics</option>
-              <option>Home accessories</option>
+              <option>Household</option>
               <option>Books</option>
+              <option>Cars</option>
             </select>
           </div>
-        <div class="form-group">
-            <label for="exampleFormControlInput1">Initial Bid</label>
-            <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Starting bid..." name="startBid" required>
+       
+        <div class="form-group">        
+          <div class="col-sm-offset-2 col-sm-10">
+          <button type="submit" class="btn btn-default">Submit</button>
           </div>
-        
-          <div class="form-group">
-            <label for="exampleFormControlInput1">Image link (optional)</label>
-            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="https://blah-blah.jpg..." name="image">
-          </div>
-
-        <button class="btn btn-outline-info" type="submit">Submit</button>
-
+        </div>
       </form>
+    </div>
+  </div>
 </div>
-{% endblock %}
+
+
+{%endblock%}

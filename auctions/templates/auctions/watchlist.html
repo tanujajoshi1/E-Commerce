@@ -2,31 +2,39 @@
 
 {% block body %}
 <div class="container">
-    <h2>Watchlist</h2>
+    <h2 style="text-align: center;font-family: Times New Roman"><b>Watchlist</b></h2>
   
 </div>
+<center>
 <div class="container" id="ActiveListing">
     {% for item in items %}
     {% for i in item %}
-    <div class="card mb-3" style="max-width: 540px;" id="card-listings">
-        <div class="row no-gutters">
-          <div class="col-md-4">
-            <img src="{{i.image}}" class="card-img" alt="...">
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <h5 class="card-title">{{i.title}}</h5>
-              <p class="card-text">{{i.description}}</p>
-              <p class="card-text">${{i.startBid}}</p>
-              <a href="{% url 'ActiveListing' i.id %}"><button class="btn btn-outline-success">View</button></a>
-              <p class="card-text"><small class="text-muted">{{i.image}}</small></p>
-            </div>
-          </div>
-        </div>
+    <div class="card mb-3" style="max-width: 540px; color:white" id="card-listings">
+      <img class="card-img-top" alt="..." src={{i.image}} >
+       
+          
+          
+            <div class="card-body" style="text-align: center;">              
+              <h4 class="card-title"><b>{{i.title}}</b></h4>
+              <h6 class="card-text">Description: {{i.description}}</h6>
+              <h6 class="card-text">Bid: $ {{i.startBid}}</h6>
+              <h6 class="card-text">Category: {{i.category}}</h6>
+              <label style="font-size:smaller;color: gray">Created on {{i.date}}</label><br/> 
+                 <label style="font-size:smaller;color: gray">Created By: {{i.owner}}</label> <br/>
+              
+              <a href="{% url 'ActiveListing' i.id %}">Go to the item</a>  </div>                   
+        
       </div>
+
       {% endfor %}
       {% empty %}
-      <h3>No listings found in your watchlist...</h3>
+      <br/>
+       <div class="alert alert-warning" role="alert">
+       No items in your watchlist
+      </div>
       {% endfor %}
 </div>
+</center>
 {% endblock %}
+
+

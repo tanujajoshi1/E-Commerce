@@ -1,18 +1,26 @@
 {% extends "auctions/layout.html" %}
 {% block body %}
 <div class="container">
-    <h2>Categories</h2>
+  <h2 style="text-align: center;font-family: Times New Roman"><b>Categories</b></h2>
 
 </div>
 <div class="container">
+	
     <ul>
+    	
         {% for i in items %}
-        <li>
+        <li>        	
             <a href="{% url 'categories' i.category %}">{{i.category}}</a>
             </li>
-        {% endfor %}
+            {%empty%}
+            <br/>
+            <div class="alert alert-warning" role="alert">
+ 	 		Active List is empty. No category
+			</div>
+           {% endfor %} 
+       
     </ul>
-    
+     
 
 </div>
 {% endblock %}
