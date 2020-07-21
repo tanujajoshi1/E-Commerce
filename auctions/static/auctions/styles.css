@@ -2,10 +2,7 @@ body {
     padding: 10px;
     background-color: black;
 }
-.container{
-height: 100%;
-align-content: center;
-}
+
 
 .card{
 
@@ -13,6 +10,9 @@ margin-top: auto;
 margin-bottom: auto;
 
 background-color: #262626!important;
+
+   	
+
 }
 
 

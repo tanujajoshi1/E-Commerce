@@ -20,14 +20,15 @@ class Bid(models.Model):
     auctionid = models.IntegerField()
     bid = models.IntegerField()
 
+
+class Watchlist(models.Model):
+    user = models.CharField(max_length=64)
+    auctionid = models.IntegerField()
+
 class Comment(models.Model):
     user = models.CharField(max_length=64)
     time = models.CharField(max_length=64)
     comment = models.TextField()
-    auctionid = models.IntegerField()
-
-class Watchlist(models.Model):
-    user = models.CharField(max_length=64)
     auctionid = models.IntegerField()
 
 class ClosedBid(models.Model):

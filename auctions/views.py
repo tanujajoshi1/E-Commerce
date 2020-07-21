@@ -92,41 +92,6 @@ def categories(request,category):
 
 
 
-def ActiveListing(request,id):
-    try:
-        item = AuctionListing.objects.get(id=id)
-    except:
-        return HttpResponseRedirect(reverse('index'))
-    try:
-        comments = Comment.objects.filter(auctionid=id)
-    except:
-        comments = None
-    if request.user.username:
-        try:
-            if Watchlist.objects.get(user=request.user.username,auctionid=id):
-                added=True
-        except:
-            added = False
-        try:            
-            if AuctionListing.objects.get(id=id).owner == request.user.username:
-                owner=True
-            else:
-                owner=False
-        except:
-            return HttpResponseRedirect(reverse('index'))
-    else:
-        added=False 
-        owner=False
-    try:        
-        counter=len(Watchlist.objects.filter(user=request.user.username))
-    except:
-        counter=None
-    return render(request,"auctions/ActiveListing.html",{"i":item,"error":request.COOKIES.get('error'),"errorgreen":request.COOKIES.get('errorgreen'),
-        "comments":comments,
-        "added":added,
-        "owner":owner,
-        "counter":counter
-    })
 
 
 def createListing(request):
@@ -203,6 +168,45 @@ def submitBid(request,auctionid):
             return response
     else:
         return HttpResponseRedirect(reverse('index'))
+        
+
+
+
+def ActiveListing(request,id):
+    try:
+        item = AuctionListing.objects.get(id=id)
+    except:
+        return HttpResponseRedirect(reverse('index'))
+    try:
+        comments = Comment.objects.filter(auctionid=id)
+    except:
+        comments = None
+    if request.user.username:
+        try:
+            if Watchlist.objects.get(user=request.user.username,auctionid=id):
+                added=True
+        except:
+            added = False
+        try:            
+            if AuctionListing.objects.get(id=id).owner == request.user.username:
+                owner=True
+            else:
+                owner=False
+        except:
+            return HttpResponseRedirect(reverse('index'))
+    else:
+        added=False 
+        owner=False
+    try:        
+        counter=len(Watchlist.objects.filter(user=request.user.username))
+    except:
+        counter=None
+    return render(request,"auctions/ActiveListing.html",{"i":item,"error":request.COOKIES.get('error'),"errorgreen":request.COOKIES.get('errorgreen'),
+        "comments":comments,
+        "added":added,
+        "owner":owner,
+        "counter":counter
+    })
 
 
 def submitComment(request,auctionid):
