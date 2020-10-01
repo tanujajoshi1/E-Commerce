@@ -43,5 +43,6 @@ Then go to http://127.0.0.1:8000 in your browser
 
 ![image](https://github.com/tanujajoshi1/E-Commerce/blob/master/auctions/static/auctions/img/pic3.png) <br/>
 
+### Models In Django Administration
 ![image](https://github.com/tanujajoshi1/E-Commerce/blob/master/auctions/static/auctions/img/pic4.png)
 <br/>
